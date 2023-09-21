@@ -57,9 +57,7 @@ jobs:
         run: make build_hwameictl OS=${{ matrix.os }} ARCH=${{ matrix.arch }}
       - name: Extract Version from Chart.yaml
         run: |
-          CHART_VERSION=$(yq eval '.version' helm/hwameistor/Chart.yaml)
-          echo "Chart version is $CHART_VERSION"
-          echo "$CHART_VERSION" > chart_version.txt
+          echo "CHART_VERSION=$(yq eval '.version' helm/hwameistor/Chart.yaml)" >> $GITHUB_ENV
       - name: Upload assets
         uses: softprops/action-gh-release@v1
         with:
@@ -67,7 +65,7 @@ jobs:
             _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}
             _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}.exe
           token: "${{ secrets.GITHUB_TOKEN }}"
-          tag_name: $(cat chart_version.txt)
+          tag_name: "${{ env.CHART_VERSION }}"
 
   release-image:
     runs-on: ubuntu-latest
