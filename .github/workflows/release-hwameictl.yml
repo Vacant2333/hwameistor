@@ -24,8 +24,8 @@ jobs:
         with:
           go-version: 1.20.4
       - name: Build hwameictl
-        run: make build_hwameictl OS=${{ matrix.os }}  ARCH=${{ matrix.arch }}
+        run: make build_hwameictl OS=${{ matrix.os }} ARCH=${{ matrix.arch }}
       - name: Upload assets
         uses: softprops/action-gh-release@v1
         with:
-          files: _build/hwameictl/hwameictl-${OS}-${ARCH}
+          files: _build/hwameictl/hwameictl-${{ matrix.os }}-ARCH=${{ matrix.arch }}
