@@ -58,7 +58,9 @@ jobs:
       - name: Upload assets
         uses: softprops/action-gh-release@v1
         with:
-          files: _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}${{ if eq(matrix.os, 'windows') }}.exe${{ endif }}
+          files: |
+            _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}
+            _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}.exe
           token: "${{ secrets.GITHUB_TOKEN }}"
 
   release-image:
