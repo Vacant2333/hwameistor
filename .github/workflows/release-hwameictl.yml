@@ -14,6 +14,7 @@ jobs:
         os:
           - linux
           - darwin
+          - windows
         arch:
           - amd64
           - arm64
@@ -28,4 +29,4 @@ jobs:
       - name: Upload assets
         uses: softprops/action-gh-release@v1
         with:
-          files: _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}
+          files: _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}${{ if eq(matrix.os, 'windows') }}.exe${{ endif }}
