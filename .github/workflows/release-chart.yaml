@@ -38,8 +38,8 @@ jobs:
   release-hwameictl:
     name: release hwameictl
     runs-on: ubuntu-22.04
-    needs:
-      - release-chart
+#    needs:
+#      - release-chart
     strategy:
       matrix:
         os:
