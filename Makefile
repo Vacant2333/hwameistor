@@ -443,7 +443,7 @@ build_hwameictl:
 ifeq ("$(OS)", "windows")
 	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} ${BUILD_CMD} -o "_build/hwameictl/hwameictl-${OS}-${ARCH}.exe" ${BUILD_OPTIONS} ${HWAMEICTL_BUILD_INPUT}
 else
-  	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} ${BUILD_CMD} -o "_build/hwameictl/hwameictl-${OS}-${ARCH}" ${BUILD_OPTIONS} ${HWAMEICTL_BUILD_INPUT}
+	CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} ${BUILD_CMD} -o "_build/hwameictl/hwameictl-${OS}-${ARCH}" ${BUILD_OPTIONS} ${HWAMEICTL_BUILD_INPUT}
 endif
 
 .PHONY: apis
