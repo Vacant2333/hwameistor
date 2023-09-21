@@ -1,11 +1,9 @@
 name: Release hwameictl
 
 on:
-  workflow_dispatch:
-    inputs:
-      release_tag:
-        required: true
-        type: string
+  release:
+    types:
+      - published
 
 jobs:
   release-hwameictl:
