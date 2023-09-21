@@ -28,4 +28,4 @@ jobs:
       - name: Upload assets
         uses: softprops/action-gh-release@v1
         with:
-          files: _build/hwameictl/hwameictl-${{ matrix.os }}-ARCH=${{ matrix.arch }}
+          files: _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}
