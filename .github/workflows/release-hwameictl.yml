@@ -1,0 +1,31 @@
+name: Release hwameictl
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  release-hwameictl:
+    name: release hwameictl
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        os:
+          - linux
+          - darwin
+        arch:
+          - amd64
+          - arm64
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.20.4
+      - name: Build hwameictl
+        run: make build_hwameictl OS=${{ matrix.os }} ARCH=${{ matrix.arch }}
+      - name: Upload assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: _build/hwameictl/hwameictl-${{ matrix.os }}-${{ matrix.arch }}
